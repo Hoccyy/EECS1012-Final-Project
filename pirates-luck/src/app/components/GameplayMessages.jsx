@@ -13,7 +13,7 @@ const GameplayMessages = (
         ('Wow... ' + numberOfTries + ' Tries???'),
         'You\'re doing amazing. 🤩',
         'Close one...',
-        'Tip: Try using observation haki',
+        'Tip: Try using observation haki...',
     ];
     return wordsOfEncouragement[Math.floor(Math.random() * wordsOfEncouragement.length) + 1];
 }
