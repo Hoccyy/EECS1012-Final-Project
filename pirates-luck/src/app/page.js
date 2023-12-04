@@ -52,7 +52,7 @@ export default function Home() {
                 
               </p>
               <p className='gmsg2'>
-                &nbsp;|&nbsp;{ GameplayMessages(numberOfTries) }
+                &nbsp;{ GameplayMessages(numberOfTries) }
               </p>
               <div>
               </div>
@@ -61,33 +61,32 @@ export default function Home() {
           </div>
 
           <div className={styles.center}>
-          <input className='guessInput' type='number' placeholder='Enter Guess!'></input>
+            <input className={styles.guessInput} type='number' placeholder='Enter Guess!'/>
 
-          <button className={styles.CheckButton} onClick={()=> {
-            alert(1313);
-            userGuess = (document.querySelector('input').value);
+            <button className={styles.CheckButton} onClick={()=> {
+              userGuess = (document.querySelector('input').value);
 
-            if (userGuess == numberToGuess) {
-              alert("Congrats! it was " + numberToGuess);
-              numberOfTries += 1;
-              
-              // Track number of tries
-              var x = document.getElementsByClassName('gmsg')[0];
-              x.innerHTML = 'Number of Tries : ' + numberOfTries;
-            } else {
+              if (userGuess == numberToGuess) {
+                alert("Congrats! it was " + numberToGuess);
+                numberOfTries += 1;
+                
+                // Track number of tries
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+              } else {
 
-              numberOfTries += 1;
-              
-              // Track number of tries
-              var x = document.getElementsByClassName('gmsg')[0];
-              x.innerHTML = 'Number of Tries : ' + numberOfTries;
+                numberOfTries += 1;
+                
+                // Track number of tries
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
 
-              var y = document.getElementsByClassName('gmsg2')[0];
-              y.innerHTML = GameplayMessages(numberOfTries);
-            }
-            }}>
-            Check
-          </button>
+                var y = document.getElementsByClassName('gmsg2')[0];
+                y.innerHTML = GameplayMessages(numberOfTries);
+              }
+              }}>
+              Check
+            </button>
           </div>
 
           <div className={styles.grid}>
@@ -114,7 +113,6 @@ export default function Home() {
               numberToGuess = RandomNumber('extreme');
               alert(numberToGuess);
             }}>Extreme!</button>
-            
           </div>
  
 

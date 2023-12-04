@@ -36,7 +36,8 @@
 }
 /* Alter this to make changes to the general layout and sizing*/
 .gamePlayStagesParent {
-  border: 3px dotted red;
+  border: 3px dotted grey;
+  border-radius: 13px;
   display: flex;
   width: 93.13vw;
 }
@@ -118,15 +119,20 @@
 }
 
 .CheckButton {
-  width: 60px;
-  height: 40px;
+  width: 140px;
+  height: 70px;
+  font-size: 30px;
+  background-color: lightgreen;
+  border: none;
+  border-radius: 11px;
 }
 
-.guessInput2 {
+.guessInput {
   height: 60px;
   font-size: 30px;
   background-color: lightblue;
-  padding: 900px;
+  color: black;
+
 }
 
 .card {

@@ -15,7 +15,14 @@ const GameplayMessages = (
         'Close one...',
         'Tip: Try using observation haki...',
     ];
-    return wordsOfEncouragement[Math.floor(Math.random() * wordsOfEncouragement.length) + 1];
+    let t = 0;
+    while (true) {
+        t = Math.floor(Math.random() * wordsOfEncouragement.length) + 1;
+        if (t >= 0 && t < wordsOfEncouragement.length) {
+            break
+        }
+    }
+    return wordsOfEncouragement[t];
 }
 
 export default GameplayMessages;
