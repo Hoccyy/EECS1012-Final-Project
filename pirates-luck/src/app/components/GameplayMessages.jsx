@@ -3,7 +3,7 @@ import React from 'react';
 import styles from '../page.module.css';
 
 const GameplayMessages = (
-    numberOfTries
+    numberOfTries = 0,
 ) => {
     // Returns a random words of encouragement during gameplay
     let wordsOfEncouragement = [

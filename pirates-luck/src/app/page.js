@@ -7,6 +7,10 @@ import GameWinner from './components/GameWinner'
 
 var numberOfTries = 0;
 var numberOfWins = 0;
+var numberToGuess;
+var userGuess = 0;
+
+
 // TODO clear this before product launch
 var leaderboardOfWinners = ['Derrick Himenez', 'Doug', 'perter sumn'];
 
@@ -20,7 +24,7 @@ export default function Home() {
           <h1>Leaderboard</h1>
 
           {/* ADD them here */}
-          <div>
+          <div id='ListOfWinners'>
             <tr className={styles.awardeeInfoHeader}>
               <th className={styles.awardeeHeaderText}>Player&apos;s Name</th>
               <th className={styles.awardeeHeaderText}>Tries</th>
@@ -43,9 +47,11 @@ export default function Home() {
           <div className={styles.center}>
         
             <div className={styles.description}>
-              <p className={styles.code}>
-                Number of tries&nbsp;
-                {numberOfTries}
+              <p id='gmsg' className='gmsg'>
+                Number of tries 0&nbsp;
+                
+              </p>
+              <p className='gmsg2'>
                 &nbsp;|&nbsp;{ GameplayMessages(numberOfTries) }
               </p>
               <div>
@@ -55,67 +61,63 @@ export default function Home() {
           </div>
 
           <div className={styles.center}>
-            <Image
-              className={styles.logo}
-              src="/next.svg"
-              alt="Next.js Logo"
-              width={180}
-              height={37}
-              priority
-            />
+          <input className='guessInput' type='number' placeholder='Enter Guess!'></input>
+
+          <button className={styles.CheckButton} onClick={()=> {
+            alert(1313);
+            userGuess = (document.querySelector('input').value);
+
+            if (userGuess == numberToGuess) {
+              alert("Congrats! it was " + numberToGuess);
+              numberOfTries += 1;
+              
+              // Track number of tries
+              var x = document.getElementsByClassName('gmsg')[0];
+              x.innerHTML = 'Number of Tries : ' + numberOfTries;
+            } else {
+
+              numberOfTries += 1;
+              
+              // Track number of tries
+              var x = document.getElementsByClassName('gmsg')[0];
+              x.innerHTML = 'Number of Tries : ' + numberOfTries;
+
+              var y = document.getElementsByClassName('gmsg2')[0];
+              y.innerHTML = GameplayMessages(numberOfTries);
+            }
+            }}>
+            Check
+          </button>
           </div>
 
           <div className={styles.grid}>
-            <a
-              href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Docs <span>-&gt;</span>
-              </h2>
-              <p>Find in-depth information about Next.js features and API.</p>
-            </a>
+            <button className={styles.diffcultyButton} onClick={()=> {
+              numberToGuess = RandomNumber('easy');
+              var message = document.getElementsByClassName('DifficultyMsg')[0];
 
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Learn <span>-&gt;</span>
-              </h2>
-              <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-            </a>
+              alert(numberToGuess);
+            }}>
+              Easy
+            </button>
 
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Templates <span>-&gt;</span>
-              </h2>
-              <p>Explore the Next.js 13 playground.</p>
-            </a>
+            <button className={styles.diffcultyButton} onClick={()=> {
+              numberToGuess = RandomNumber('medium');
+              alert(numberToGuess);
+            }}>Medium</button>
 
-            <a
-              href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-              className={styles.card}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <h2>
-                Deploy <span>-&gt;</span>
-              </h2>
-              <p>
-                Instantly deploy your Next.js site to a shareable URL with Vercel.
-              </p>
-            </a>
+            <button className={styles.diffcultyButton} onClick={()=> {
+              numberToGuess = RandomNumber('hard');
+              alert(numberToGuess);
+            }}>Hard</button>
+
+            <button className={styles.diffcultyButton} onClick={()=> {
+              numberToGuess = RandomNumber('extreme');
+              alert(numberToGuess);
+            }}>Extreme!</button>
+            
           </div>
+ 
+
         </div>
       </div>
     </main>
