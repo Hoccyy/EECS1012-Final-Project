@@ -9,6 +9,7 @@ var numberOfTries = 0;
 var numberOfWins = 0;
 var numberToGuess;
 var userGuess = 0;
+var userGuessedNum = false;
 
 
 // TODO clear this before product launch
@@ -24,22 +25,8 @@ export default function Home() {
           <h1>Leaderboard</h1>
 
           {/* ADD them here */}
-          <div id='ListOfWinners'>
-            <tr className={styles.awardeeInfoHeader}>
-              <th className={styles.awardeeHeaderText}>Player&apos;s Name</th>
-              <th className={styles.awardeeHeaderText}>Tries</th>
-              <th className={styles.awardeeHeaderText}>Number</th>
-            </tr>
-            <GameWinner
-              playerName = {'Doug'}
-              numOfTries = {1313}
-              number = {99}
-            />
-            <GameWinner
-              playerName = {'Doug'}
-              numOfTries = {1313}
-              number = {99}
-            />
+          <div className='ListOfWinners'>
+            <h1 className='leaderboardData' id='leaderboardData'></h1>
           </div>
 
         </div>
@@ -68,11 +55,33 @@ export default function Home() {
 
               if (userGuess == numberToGuess) {
                 alert("Congrats! it was " + numberToGuess);
+
                 numberOfTries += 1;
+                userGuessedNum = true;
                 
                 // Track number of tries
-                var x = document.getElementsByClassName('gmsg')[0];
-                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+                var gamePlayMsgs = document.getElementsByClassName('gmsg')[0];
+                gamePlayMsgs.innerHTML = 'Number of Tries : ' + numberOfTries;
+
+                
+                let winnerName = prompt('Enter your name pirate hero!');
+                var leaderboardInfo = document.getElementsByClassName('leaderboardData')[0];
+                leaderboardInfo.innerHTML += (
+                  "|  " +
+                  winnerName +
+                  " got " +
+                  numberToGuess +
+                  " in " +
+                  numberOfTries +
+                  (numberOfTries == 1 ? "  try!" : "  tries!") +
+                  "  |"
+                  );
+                alert(
+                  winnerName +
+                  " Got it in " +
+                  numberOfTries +
+                  " tries! 🎉🥳"
+                )
               } else {
 
                 numberOfTries += 1;
@@ -91,25 +100,48 @@ export default function Home() {
 
           <div className={styles.grid}>
             <button className={styles.diffcultyButton} onClick={()=> {
+              if (userGuessedNum) {
+                numberOfTries = 0;
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+              }
+              userGuessedNum = false;
               numberToGuess = RandomNumber('easy');
               var message = document.getElementsByClassName('DifficultyMsg')[0];
-
               alert(numberToGuess);
             }}>
               Easy
             </button>
 
             <button className={styles.diffcultyButton} onClick={()=> {
+              if (userGuessedNum) {
+                numberOfTries = 0;
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+              }
+              userGuessedNum = false;
               numberToGuess = RandomNumber('medium');
               alert(numberToGuess);
             }}>Medium</button>
 
             <button className={styles.diffcultyButton} onClick={()=> {
+              if (userGuessedNum) {
+                numberOfTries = 0;
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+              }
+              userGuessedNum = false;
               numberToGuess = RandomNumber('hard');
               alert(numberToGuess);
             }}>Hard</button>
 
             <button className={styles.diffcultyButton} onClick={()=> {
+              if (userGuessedNum) {
+                numberOfTries = 0;
+                var x = document.getElementsByClassName('gmsg')[0];
+                x.innerHTML = 'Number of Tries : ' + numberOfTries;
+              }
+              userGuessedNum = false;
               numberToGuess = RandomNumber('extreme');
               alert(numberToGuess);
             }}>Extreme!</button>
